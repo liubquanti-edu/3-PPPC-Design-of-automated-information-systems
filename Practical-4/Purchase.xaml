@@ -1,0 +1,71 @@
+﻿<Window x:Class="PR_Store.Purchase"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PR_Store"
+        mc:Ignorable="d"
+        Title="Purchase" Height="1400" Width="2500" WindowState="Maximized" Padding="10,10,10,10" WindowStyle="None">
+    <Grid>
+        <Grid Background="Lavender">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <ComboBox x:Name="CateforyItemList" DisplayMemberPath="Name" SelectionChanged="CategoryItemList_SelectionChanged"
+                      HorizontalAlignment="Center" VerticalAlignment="Center" Margin="200,0,0,0"  Width="250" Height="41" FontSize="24"/>
+                <Label Content="Category: " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,200,0" FontSize="24"/>
+
+                <ListView x:Name="ProductsItemList" Grid.Row="1" SelectionChanged="ProductsItemList_SelectionChanged" Background="#CEC8EF" FontSize="24">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name" Width="460" DisplayMemberBinding="{Binding Name}"/>
+                            <GridViewColumn Header="Price" Width="250" DisplayMemberBinding="{Binding Price}"/>
+                            <GridViewColumn Header="Quantity" Width="250" DisplayMemberBinding="{Binding Quantity}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="50,0,0,0" Grid.Row="2" Width="300">
+                    <TextBox Text="{Binding ElementName=QuantitySlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right"
+                         TextAlignment="Right" Width="40" FontSize="24"/>
+                    <Slider Minimum="0" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Name="QuantitySlider" ValueChanged="QuantitySlider_ValueChanged"/>
+                </DockPanel>
+
+                <Label Grid.Row="2" Content="Amount: " HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,50,0" FontSize="24"/>
+                <Label x:Name="AmountForProduct" Grid.Row="2" Content="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="100,0,0,0" FontSize="24"/>
+                <Button Content="Add" Grid.Row="2" Width="150" Height="50" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,100,0"
+                    Background="#64609A" Foreground="AliceBlue" Click="Button_Add" FontWeight="Bold" FontSize="24"/>
+            </Grid>
+            
+            <Grid Grid.Column="1">
+                <Label Content="List of products" Height="48" VerticalAlignment="Top" HorizontalAlignment="Center" d:LayoutOverrides="VerticalAlignment" FontSize="24" FontWeight="Bold" Margin="0,10,0,0"/>
+
+                <ListView x:Name="ReceiptProductsItemList" Height="800" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="20,70,20,0" Background="#CEC8EF" FontSize="24">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn Header="Name of Product" Width="350" DisplayMemberBinding="{Binding Product.Name}"/>
+                            <GridViewColumn Header="Price" Width="190" DisplayMemberBinding="{Binding Product.Price}"/>
+                            <GridViewColumn Header="Quantity" Width="190" DisplayMemberBinding="{Binding Quantity}"/>
+                            <GridViewColumn Header="Amount" Width="190" DisplayMemberBinding="{Binding Amount}"/>
+                        </GridView>
+                    </ListView.View>
+                </ListView>
+
+                <Label Grid.Row="2" Content="Amount: " HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,150,150" FontSize="24"/>
+                <Label x:Name="Amount" Grid.Row="2" Content="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="100,0,50,150" FontSize="24"/>
+                <Button Content="Delete from list" Height="45" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="50,0,0,50" Click="Button_Delete" Background="#64609A" Foreground="AliceBlue" FontWeight="Bold" FontSize="24"/>
+                <Button Content="Cancel purchase" Height="45" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,0,0,50" Click="Button_Cancel" Background="#64609A" Foreground="AliceBlue" FontWeight="Bold" FontSize="24"/>
+                <Button Content="Confirm purchase" Height="45" Width="250" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,50,50" Click="Button_Confirm" Background="#64609A" Foreground="AliceBlue" FontWeight="Bold" FontSize="24"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
