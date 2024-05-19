@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace PR_Store
@@ -28,6 +29,12 @@ namespace PR_Store
             context = new DataContext();
             InitializeComponent();
             UpdateData();
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
 
         private void Button_Click_Create_Categories(object sender, RoutedEventArgs e)

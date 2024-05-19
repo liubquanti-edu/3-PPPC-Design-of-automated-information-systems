@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:PR_Store"
         mc:Ignorable="d"
 
-        Title="Manage" Height="800" Width="800" Background="#26292e" FontSize="15" FontWeight="Bold">
+        Title="Manage" Height="800" Width="800" WindowState="Maximized" WindowStyle="None" Background="#26292e" FontSize="15" FontWeight="Bold">
     <Window.Resources>
         <Style TargetType="TabControl">
             <Setter Property="Template">
@@ -55,7 +55,7 @@
     </Window.Resources>
     <Grid Background="#26292e">
         <TabControl>
-            <TabItem Header="Категорії" Foreground="#f1f1f1">
+            <TabItem Header="Категорії" Foreground="#f1f1f1" Height="50" Width="150">
                 <TabItem.Template>
                     <ControlTemplate TargetType="TabItem">
                         <Grid>
@@ -335,7 +335,7 @@
                     </Grid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Продукт" Background="#26292e" Foreground="#f1f1f1">
+            <TabItem Header="Продукт" Background="#26292e" Foreground="#f1f1f1"  Height="50" Width="150">
                 <TabItem.Template>
                     <ControlTemplate TargetType="TabItem">
                         <Grid>
@@ -604,6 +604,7 @@
                                 </TextBox.Style>
                             </TextBox>
                             <TextBox x:Name="ProductQuantityTextBox"
+                                     PreviewTextInput="NumberValidationTextBox"
                                      BorderThickness="0" 
                                      Grid.Column="1" 
                                      Grid.Row="0" 
@@ -663,6 +664,7 @@
                                 </TextBox.Style>
                             </TextBox>
                             <TextBox x:Name="ProductPriceTextBox"
+                                     PreviewTextInput="NumberValidationTextBox"
                                      BorderThickness="0" 
                                      Grid.Column="0" 
                                      Grid.Row="1" 

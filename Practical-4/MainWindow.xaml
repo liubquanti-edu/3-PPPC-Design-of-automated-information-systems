@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_Store"
         mc:Ignorable="d"
-        Title="Store" Height="600" Width="800">
+        Title="Store" WindowState="Maximized" WindowStyle="None" FontWeight="Bold">
     <Grid Background="#1b1b1b">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-       <Button Content="Sell" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Height="50" Width="150" Margin="100,0,0,0" Background="#26292e" Foreground="#a4c9ff" Click="Button_Click_1" Grid.ColumnSpan="2">
+        <Button Content="Продаж" BorderThickness="0" Grid.Column="0" VerticalAlignment="Center" Height="50" Width="150" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_Click_1">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25"/>
@@ -33,7 +33,7 @@
                                                     <ColorAnimation
                                                         Storyboard.TargetName="border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="#313131" Duration="0:0:0.3"/>
+                                                        To="#728cb2" Duration="0:0:0.3"/>
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.EnterActions>
@@ -43,7 +43,7 @@
                                                     <ColorAnimation
                                                         Storyboard.TargetName="border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="#26292e" Duration="0:0:0.3"/>
+                                                        To="#a4c9ff" Duration="0:0:0.3"/>
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.ExitActions>
@@ -53,12 +53,12 @@
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Background" Value="#26292e"/>
-                    <Setter Property="Foreground" Value="#313131"/>
-                    <Setter Property="Border.CornerRadius" Value="25"/>
+                    <Setter Property="Foreground" Value="#a4c9ff"/>
+                    <Setter Property="Border.CornerRadius" Value="15"/>
                 </Style>
             </Button.Style>
         </Button>
-        <Button Content="Manage" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="150" Margin="100,0,0,0" Background="#26292e" Foreground="#a4c9ff" Click="Button_Click" Grid.ColumnSpan="2">
+        <Button Content="Керування" BorderThickness="0" Grid.Column="1" VerticalAlignment="Center" Height="50" Width="150" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_Click">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="25"/>
@@ -80,7 +80,7 @@
                                                     <ColorAnimation
                                                         Storyboard.TargetName="border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="#313131" Duration="0:0:0.3"/>
+                                                        To="#728cb2" Duration="0:0:0.3"/>
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.EnterActions>
@@ -90,7 +90,7 @@
                                                     <ColorAnimation
                                                         Storyboard.TargetName="border"
                                                         Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
-                                                        To="#26292e" Duration="0:0:0.3"/>
+                                                        To="#a4c9ff" Duration="0:0:0.3"/>
                                                 </Storyboard>
                                             </BeginStoryboard>
                                         </Trigger.ExitActions>
@@ -100,8 +100,8 @@
                         </Setter.Value>
                     </Setter>
                     <Setter Property="Background" Value="#26292e"/>
-                    <Setter Property="Foreground" Value="#313131"/>
-                    <Setter Property="Border.CornerRadius" Value="25"/>
+                    <Setter Property="Foreground" Value="#a4c9ff"/>
+                    <Setter Property="Border.CornerRadius" Value="15"/>
                 </Style>
             </Button.Style>
         </Button>
