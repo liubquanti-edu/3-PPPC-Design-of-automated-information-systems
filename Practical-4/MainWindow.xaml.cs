@@ -21,6 +21,7 @@ namespace PR_Store
             InitializeComponent();
         }
 
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Manage manageWindow = new Manage();

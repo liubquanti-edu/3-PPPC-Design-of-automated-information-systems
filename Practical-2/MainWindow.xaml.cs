@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -8,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace Practical_2
 {
@@ -16,20 +21,24 @@ namespace Practical_2
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        ApplicationContext db;
+
         public MainWindow()
         {
             InitializeComponent();
+            db = new ApplicationContext();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            string mlogin = textBoxLogin.Text.Trim();
+            string login = textBoxLogin.Text.Trim();
             string pass = passBox.Password.Trim();
             string pass_2 = passBox2.Password.Trim();
             string email = textBoxEmail.Text.Trim().ToLower();
             int a = 1;
 
-            if (mlogin.Length < 5)
+            if (login.Length < 5)
             {
                 textBoxLogin.ToolTip = "Це поле введено невірно!";
                 textBoxLogin.Background = Brushes.LightPink;
@@ -79,6 +88,10 @@ namespace Practical_2
 
             if (a == 1)
                 MessageBox.Show("Все добре!");
+                User user = new User(login, email, pass);
+
+                db.Users.Add(user);
+                db.SaveChanges();
         }
     }
 }

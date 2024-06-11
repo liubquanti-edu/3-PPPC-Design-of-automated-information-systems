@@ -29,6 +29,11 @@ namespace PR_Store
             UpdateData();
         }
 
+        private void CloseCommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         public void Window_Closed(object sender, EventArgs e)
         {
             UpdateData();

@@ -37,6 +37,11 @@ namespace PR_Store
             e.Handled = regex.IsMatch(e.Text);
         }
 
+        private void CloseCommandBinding_Executed(object sender, System.Windows.Input.ExecutedRoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void Button_Click_Create_Categories(object sender, RoutedEventArgs e)
         {
             context.Categories.Add(new Category

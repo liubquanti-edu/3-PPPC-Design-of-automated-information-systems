@@ -53,8 +53,20 @@
         <SolidColorBrush x:Key="TabItemMouseOverBackground" Color="#26292e"/>
         <SolidColorBrush x:Key="TabItemBackground" Color="#1b1b1b"/>
     </Window.Resources>
-    <Grid Background="#26292e">
+    <Window.InputBindings>
+        <KeyBinding Command="ApplicationCommands.Close" Key="Esc" />
+      </Window.InputBindings>
+      
+      <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandBinding_Executed" />
+      </Window.CommandBindings>
+    <Grid Background="#1b1b1b">
         <TabControl>
+            <TabControl.Resources>
+                <Style TargetType="{x:Type TabPanel}">
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                </Style>
+            </TabControl.Resources>
             <TabItem Header="Категорії" Foreground="#f1f1f1" Height="50" Width="150">
                 <TabItem.Template>
                     <ControlTemplate TargetType="TabItem">
@@ -191,7 +203,7 @@
                </TextBox>               
                     </Grid>
                     <Grid Grid.Row="2">
-                        <Button Content="Створити" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="100,0,0,0" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_Click_Create_Categories" Grid.ColumnSpan="2">
+                        <Button Content="Створити" BorderThickness="0" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="0,0,400,0" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_Click_Create_Categories" Grid.ColumnSpan="2">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="25"/>
@@ -285,7 +297,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>                                                                                            
-                        <Button Content="Видалити" BorderThickness="0" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="0,0,100,0" Background="#a4c9ff" Foreground="#1b1b1b" Grid.Column="1" Click="Button_Click_Delete_Categories">
+                        <Button Content="Видалити" BorderThickness="0" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="400,0,0,0" Background="#a4c9ff" Foreground="#1b1b1b" Grid.Column="1" Click="Button_Click_Delete_Categories">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="25"/>
@@ -390,7 +402,7 @@
                         </ListView.View>
                     </ListView>
                     <Grid Grid.Row="2">
-                        <Button Content="Створити" BorderThickness="0" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="100,0,0,0" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_Click_Create_Products" Grid.ColumnSpan="2">
+                        <Button Content="Створити" BorderThickness="0" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="0,0,400,0" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_Click_Create_Products" Grid.ColumnSpan="2">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="25"/>
@@ -484,7 +496,7 @@
                                 </Style>
                             </Button.Style>
                         </Button>                                                                                            
-                        <Button Content="Видалити" BorderThickness="0" HorizontalAlignment="Right" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="0,0,100,0" Background="#a4c9ff" Foreground="#1b1b1b" Grid.Column="1" Click="Button_Click_Delete_Product">
+                        <Button Content="Видалити" BorderThickness="0" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Height="50" Width="150" Margin="400,0,0,0" Background="#a4c9ff" Foreground="#1b1b1b" Grid.Column="1" Click="Button_Click_Delete_Product">
                             <Button.Resources>
                                 <Style TargetType="Border">
                                     <Setter Property="CornerRadius" Value="25"/>

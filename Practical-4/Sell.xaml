@@ -5,7 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PR_Store"
         mc:Ignorable="d"
-        Title="Sell" Height="1400" Width="2500" WindowState="Maximized">
+        Title="Sell" WindowState="Maximized" WindowStyle="None" Background="#1b1b1b" FontSize="15" FontWeight="Bold">
+        <Window.InputBindings>
+            <KeyBinding Command="ApplicationCommands.Close" Key="Esc" />
+          </Window.InputBindings>
+          
+          <Window.CommandBindings>
+            <CommandBinding Command="ApplicationCommands.Close" Executed="CloseCommandBinding_Executed" />
+          </Window.CommandBindings>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="5*"/>
@@ -16,30 +23,156 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <ListView x:Name="ReceiptsItemList" SelectionChanged="ReceiptsItemList_SelectionChanged" Margin="10" Background="Lavender" FontSize="24">
+            <ListView x:Name="ReceiptsItemList" 
+            Background="#26292e" 
+            Foreground="#f1f1f1" 
+            BorderThickness="0"
+            SelectionChanged="ReceiptsItemList_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Id" Width="150" DisplayMemberBinding="{Binding Id}"/>
-                    <GridViewColumn Header="DateTime" Width="200" DisplayMemberBinding="{Binding DateTime}"/>
-                    <GridViewColumn Header="Amount" Width="150" DisplayMemberBinding="{Binding Amount}"/>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Background" Value="Black"/>
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Foreground" Value="#f1f1f1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="GridViewColumnHeader">
+                                        <ContentPresenter HorizontalAlignment="Center"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="№" Width="150" DisplayMemberBinding="{Binding Id}"/>
+                    <GridViewColumn Header="Дата та час" Width="200" DisplayMemberBinding="{Binding DateTime}"/>
+                    <GridViewColumn Header="Вартість" Width="150" DisplayMemberBinding="{Binding Amount}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <ListView x:Name="ReceiptProductsItemList" Grid.Row="1" Margin="10" Background="Lavender" FontSize="24">
+            <ListView x:Name="ReceiptProductsItemList" 
+            Grid.Row="1"
+            Background="#26292e" 
+            Foreground="#f1f1f1" 
+            BorderThickness="0">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Name of Product" Width="250" DisplayMemberBinding="{Binding Product.Name}"/>
-                    <GridViewColumn Header="Price" Width="150" DisplayMemberBinding="{Binding Product.Price}"/>
-                    <GridViewColumn Header="Quantity" Width="150" DisplayMemberBinding="{Binding Quantity}"/>
-                    <GridViewColumn Header="Amount" Width="150" DisplayMemberBinding="{Binding Amount}"/>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style TargetType="GridViewColumnHeader">
+                            <Setter Property="Background" Value="Black"/>
+                            <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                            <Setter Property="Foreground" Value="#f1f1f1"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="GridViewColumnHeader">
+                                        <ContentPresenter HorizontalAlignment="Center"/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+                    <GridViewColumn Header="Назва подукту" Width="250" DisplayMemberBinding="{Binding Product.Name}"/>
+                    <GridViewColumn Header="Ціна" Width="150" DisplayMemberBinding="{Binding Product.Price}"/>
+                    <GridViewColumn Header="Кількість" Width="150" DisplayMemberBinding="{Binding Quantity}"/>
+                    <GridViewColumn Header="Вартість" Width="150" DisplayMemberBinding="{Binding Amount}"/>
                 </GridView>
             </ListView.View>
         </ListView>
-
-        <Button Content="New purchase" Grid.Column="1" Grid.Row="1" Height="50" VerticalAlignment="Center"
-                Background="#846F9F" Foreground="AliceBlue" Margin="30, 0, 30, 0" Click="Button_New_Purchase" FontWeight="Bold" FontSize="24"/>
-        <Button Content="Delete purchase" Grid.Column="1" Grid.Row="0" Height="50" VerticalAlignment="Center"
-                Background="#64609A" Foreground="AliceBlue" Margin="30, 0, 30, 0" Click="Button_Delete" FontWeight="Bold" FontSize="24"/>
+                <Button Content="Нова покупка" BorderThickness="0" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Height="50" Width="200" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_New_Purchase">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding Border.CornerRadius}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation
+                                                                Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                To="#728cb2" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation
+                                                                Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                To="#a4c9ff" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background" Value="#26292e"/>
+                            <Setter Property="Foreground" Value="#313131"/>
+                            <Setter Property="Border.CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
+                <Button Content="Видалити покупку" BorderThickness="0" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="0" VerticalAlignment="Center" Height="50" Width="200" Background="#a4c9ff" Foreground="#1b1b1b" Click="Button_Delete">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="25"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Name="border" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding Border.CornerRadius}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Trigger.EnterActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation
+                                                                Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                To="#728cb2" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.EnterActions>
+                                                <Trigger.ExitActions>
+                                                    <BeginStoryboard>
+                                                        <Storyboard>
+                                                            <ColorAnimation
+                                                                Storyboard.TargetName="border"
+                                                                Storyboard.TargetProperty="(Border.Background).(SolidColorBrush.Color)"
+                                                                To="#a4c9ff" Duration="0:0:0.3"/>
+                                                        </Storyboard>
+                                                    </BeginStoryboard>
+                                                </Trigger.ExitActions>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Background" Value="#26292e"/>
+                            <Setter Property="Foreground" Value="#313131"/>
+                            <Setter Property="Border.CornerRadius" Value="15"/>
+                        </Style>
+                    </Button.Style>
+                </Button>
     </Grid>
 </Window>
